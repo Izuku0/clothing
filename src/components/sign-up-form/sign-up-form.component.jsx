@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../routes/utils/firebase/firebase.utils";
+import FormInput from "../form-input/form-input.component";
+import './sign-up-form.styles.scss';
+import Button from "../button/button.component";
+
 const defaultFormField={
     displayName:'',
     email:'',
@@ -46,22 +50,23 @@ const SignUpForm = () => {
     };
     
     return(
-        <div>
-            <h1>Sign up with your email</h1>
+        <div className="sign-up-container">
+            <h2>Don't have an account?</h2>
+            <span>Sign up with your email and password</span>
 
             <form onSubmit={handleSubmit}>
-                <label>Display Name</label>
-                <input type="text" required onChange={handleChange} name='displayName' value={displayName}/>
+                
+                <FormInput label='Display name' type="text" required onChange={handleChange} name='displayName' value={displayName}/>
 
-                <label>Email</label>
-                <input type="email" required onChange={handleChange} name='email' value={email}/>
+                
+                <FormInput label='email' type="email" required onChange={handleChange} name='email' value={email}/>
 
-                <label >Password</label>
-                <input type="password" required onChange={handleChange} name='password' value={password}/>
+                
+                <FormInput label='password' type="password" required onChange={handleChange} name='password' value={password}/>
 
-                <label>Confirrm Password</label>
-                <input type="password" required onChange={handleChange} name='confirmPassword' value={confirmPassword}/>
-                <button type="submit">SignUp</button>
+                
+                <FormInput label='confirm password' type="password" required onChange={handleChange} name='confirmPassword' value={confirmPassword}/>
+                <Button type="submit">SignUp</Button>
             </form>
         </div>
     );
